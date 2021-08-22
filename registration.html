@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap" rel="stylesheet">
+
+<head>
+    <meta charset="utf-8">
+    <title>Form-v7 by Colorlib</title>
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Font-->
+    <link rel="stylesheet" type="text/css" href="css/opensans-font.css">
+    <link rel="stylesheet" type="text/css" href="fonts/line-awesome/css/line-awesome.min.css">
+    <!-- Jquery -->
+    <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
+    <!-- Main Style Css -->
+    <link rel="stylesheet" href="css/style.css"/>
+    <style>
+		body {
+            background-color: #56C4B0;
+            background-size: cover;
+        }
+
+        .center {
+            position: absolute;
+            background-color: white;
+            border-radius: 25px;
+            padding: 55px 50px;
+            width: 60%;
+            height: 60%;
+            margin: 100px 220px;
+
+        }
+        td {
+            height: 100%;
+        }
+        .icon2 {
+            padding-left: 100px;
+            padding-right: 50px;
+            padding-top: -50px;
+        }
+        
+        
+        .type {
+            border-radius: 25px;
+            border: none;
+            background-color: #dddddd;
+            color: #7E7e7e;
+            padding: 10px;
+            padding-left: 25px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 15px;
+            width: 230px;
+            margin: 5px;
+        }
+		label {
+        	display: inline-block;
+        	width: 110px;
+            font-family: sans-serif;
+      	}
+        button:hover {
+            background:#8EDDCA;
+        }
+		
+		p {
+			font-family: Lato;
+			font-size: 30px;
+		}
+		input {
+			font-family: Verdana, Geneva, Tahoma, sans-serif;
+			background: #56C4B0;
+            border: none;
+            color: white;
+            border-radius: 25px;
+            padding: 10px;
+            width: 150px;
+            font-size: 17px;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+
+		}
+		.register {
+			margin-top: 30px;
+            margin-right: 20px;
+
+		}
+		.register:hover {
+			background: #56C4B0;
+		}
+
+		h4 {
+			text-decoration: none;
+			font-family: Verdana, Geneva, Tahoma, sans-serif;
+			font-size: 13px;
+		}
+        label {
+            font-size: 15px;
+            padding-top: 5px;
+        }
+        
+	</style>
+</head>
+<body>
+<div class="page-content">
+    <div class="center">
+        <table>
+            <tbody>
+            <tr>
+                <td>
+                    <img class ="icon2" width ="50%" alt ="icon" src="images/logo_mint.png">
+                </td>
+                <td>
+                    <div class="form-left">
+                        <p>Sign Up</p>
+                    </div>
+                    <form class="form-detail" th:action="@{/user}" method="POST">
+                        <div class="form-row">
+                            <label for="username">NAME</label>
+                            <input type="text" name="name" id="name" class="input-text type">
+                        </div>
+                        <div class="form-row">
+                            <label for="birthday">BIRTH</label>
+                            <input type="text" name="birth" id="birth" class="input-text type">
+                        </div>
+                        <div class="form-row">
+                            <label for="your_email">EMAIL</label>
+                            <input type="text" name="email" id="email" class="input-text type" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
+                        </div>
+                        <div class="form-row">
+                            <label for="password">PASSWORD</label>
+                            <input type="password" name="password" id="password" class="input-text type" required>
+                        </div>
+                        <div class="form-row">
+                            <label for="password">PASSWORD<br>확인</label>
+                            <input type="password" name="password" id="password" class="input-text type" required>
+                        </div>
+                        <div class="form-row-last">
+                            <input type="submit" name="register" class="register" value="Register">
+                            <h4>Or <a href="login.html">Sign in</a></h4>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+<script>
+		// just for the demos, avoids form submit
+		jQuery.validator.setDefaults({
+		  	debug: true,
+		  	success:  function(label){
+        		label.attr('id', 'valid');
+   		 	},
+		});
+		$( "#myform" ).validate({
+		  	rules: {
+			    your_email: {
+			      	required: true,
+			      	email: true
+			    },
+			    password: "required",
+		    	comfirm_password: {
+		      		equalTo: "#password"
+		    	}
+		  	},
+		  	messages: {
+		  		username: {
+		  			required: "Please enter an username"
+		  		},
+		  		your_email: {
+		  			required: "Please provide an email"
+		  		},
+		  		password: {
+	  				required: "Please provide a password"
+		  		},
+		  		comfirm_password: {
+		  			required: "Please provide a password",
+		      		equalTo: "Wrong Password"
+		    	}
+		  	}
+		});
+	</script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
